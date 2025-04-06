@@ -3,7 +3,7 @@ import React from 'react'
 function Tracks() {
 
     return (
-        <table class="track-table">
+        <table className = "track-table">
             <thead>
                 <tr>
                     <th>Track</th>
