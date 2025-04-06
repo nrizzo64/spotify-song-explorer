@@ -11,7 +11,7 @@ import { useAuth } from "./auth/AuthProvider.jsx";
 
 function App() {
   const { isAuthenticated } = useAuth();
-
+  
   return (
     <>
       {!isAuthenticated && <LoginModal />
