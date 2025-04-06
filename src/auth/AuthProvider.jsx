@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
+let hasRun = false;
 
 export const useAuth = () => useContext(AuthContext);
 
 const CLIENT_ID = "0396183bb5b544b186b688a1220449cf";
-const REDIRECT_URI = "http://localhost:5173"; // Change for your app
-const SCOPES = "user-read-private user-read-email"; // Whatever scopes you need
+const REDIRECT_URI = "http://localhost:5173";
+const SCOPES = "user-read-private user-read-email";
 
 const generateRandomString = (length = 128) =>
   [...crypto.getRandomValues(new Uint8Array(length))]
@@ -27,8 +28,14 @@ export const AuthProvider = ({ children }) => {
   const [expiresAt, setExpiresAt] = useState(null);
 
   useEffect(() => {
+    if (hasRun) return;
+    hasRun = true;
+    
     const storedToken = localStorage.getItem("access_token");
     const storedExpiry = localStorage.getItem("expires_at");
+
+    console.log(`stored Token: ${storedToken}`);
+    console.log(`stored Expiry: ${storedExpiry}`);
 
     if (storedToken && storedExpiry && Date.now() < parseInt(storedExpiry)) {
       setAccessToken(storedToken);
@@ -36,9 +43,12 @@ export const AuthProvider = ({ children }) => {
     } else {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
+      console.log(`urlParams: ${urlParams}`);
+      console.log(`code: ${code}`);
 
       if (code) {
         const codeVerifier = localStorage.getItem("code_verifier");
+        console.log(`codeVerifier: ${codeVerifier}`);
 
         fetch("https://accounts.spotify.com/api/token", {
           method: "POST",
@@ -58,6 +68,9 @@ export const AuthProvider = ({ children }) => {
 
             setAccessToken(access_token);
             setExpiresAt(expires_at);
+
+            console.log(`access_token: ${access_token}`);
+            console.log(`expires_at: ${expires_at}`);
             localStorage.setItem("access_token", access_token);
             localStorage.setItem("expires_at", expires_at);
 

@@ -10,19 +10,13 @@ import { useAuth } from "./auth/AuthProvider.jsx";
 
 
 function App() {
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const { isAuthenticated, login } = useAuth();
-  console.log("App")
-  useEffect(() => {
-    if (!isAuthenticated) {
-      setShowLoginModal(true);
-    }
-  }, [isAuthenticated]);
+  const { isAuthenticated } = useAuth();
 
   return (
     <>
-      {showLoginModal && <LoginModal />
-        || <div className="wrapper">
+      {!isAuthenticated && <LoginModal />
+        || 
+        <div className="wrapper">
           <Header />
 
           <div className="dashboard">
