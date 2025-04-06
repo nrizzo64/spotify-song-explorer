@@ -1,9 +1,11 @@
 import React from 'react'
+import { useSpotifyTopTracks } from '../hooks/useSpotifyTopTracks';
 
 function Tracks() {
-
+    const { topTracks, loading, error } = useSpotifyTopTracks();
+    console.log(topTracks)
     return (
-        <table className = "track-table">
+        <table className="track-table">
             <thead>
                 <tr>
                     <th>Track</th>
@@ -23,84 +25,21 @@ function Tracks() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <img src="album.jpg" alt="Album Art" width="44" />
-                        Song Name
-                    </td>
-                    <td>Artist Name</td>
-                    <td>0.87</td>
-                    <td>0.65</td>
-                    <td>0.92</td>
-                    <td>
-                        <button>▶</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="album.jpg" alt="Album Art" width="44" />
-                        Song Name
-                    </td>
-                    <td>Artist Name</td>
-                    <td>0.87</td>
-                    <td>0.65</td>
-                    <td>0.92</td>
-                    <td>
-                        <button>▶</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="album.jpg" alt="Album Art" width="44" />
-                        Song Name
-                    </td>
-                    <td>Artist Name</td>
-                    <td>0.87</td>
-                    <td>0.65</td>
-                    <td>0.92</td>
-                    <td>
-                        <button>▶</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="album.jpg" alt="Album Art" width="44" />
-                        Song Name
-                    </td>
-                    <td>Artist Name</td>
-                    <td>0.87</td>
-                    <td>0.65</td>
-                    <td>0.92</td>
-                    <td>
-                        <button>▶</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="album.jpg" alt="Album Art" width="44" />
-                        Song Name
-                    </td>
-                    <td>Artist Name</td>
-                    <td>0.87</td>
-                    <td>0.65</td>
-                    <td>0.92</td>
-                    <td>
-                        <button>▶</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="album.jpg" alt="Album Art" width="44" />
-                        Song Name
-                    </td>
-                    <td>Artist Name</td>
-                    <td>0.87</td>
-                    <td>0.65</td>
-                    <td>0.92</td>
-                    <td>
-                        <button>▶</button>
-                    </td>
-                </tr>
+                {topTracks.map(track => (
+                    <tr key={track.id}>
+                        <td>
+                            <img src="album.jpg" alt="Album Art" width="44" />
+                            {track.name}
+                        </td>
+                        <td>{track.artists[0].name}</td>
+                        <td>0.87</td>
+                        <td>0.65</td>
+                        <td>0.92</td>
+                        <td>
+                            <button>▶</button>
+                        </td>
+                    </tr>
+                ))}
             </tbody>
         </table>
     )

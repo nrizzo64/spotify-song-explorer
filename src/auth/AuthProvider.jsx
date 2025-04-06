@@ -7,7 +7,7 @@ export const useAuth = () => useContext(AuthContext);
 
 const CLIENT_ID = "0396183bb5b544b186b688a1220449cf";
 const REDIRECT_URI = "http://localhost:5173";
-const SCOPES = "user-read-private user-read-email";
+const SCOPES = "user-read-private user-read-email user-top-read";
 
 const generateRandomString = (length = 128) =>
   [...crypto.getRandomValues(new Uint8Array(length))]
