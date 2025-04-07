@@ -1,4 +1,47 @@
+.track-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
 td img:hover {
     filter: grayscale(100%) brightness(0.8);
     transition: filter 0.2s ease;
-  }
+}
+
+th:first-child {
+    border-top-left-radius: 12px;
+}
+
+th:last-child {
+    border-top-right-radius: 12px;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+
+th {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+th:hover {
+    color: green;
+}
+
+td:hover {
+    color: green;
+}
+
+
+
+.sorted-col {
+    font-weight: bold;
+}

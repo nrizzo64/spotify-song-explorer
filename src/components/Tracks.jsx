@@ -72,7 +72,8 @@ function Tracks() {
                 <thead>
                     <tr>
                         <th></th>
-                        <th onClick={() => handleSort("title")}>Title {sortKey === "title" && (sortOrder === "asc" ? "↑" : "↓")}</th>
+                        <th className={sortKey === "title" ? "sorted-col" : ""}
+                        onClick={() => handleSort("title")}>Title {sortKey === "title" && (sortOrder === "asc" ? "↑" : "↓")}</th>
                         <th onClick={() => handleSort("artist")}>Artist {sortKey === "artist" && (sortOrder === "asc" ? "↑" : "↓")}</th>
                         <th onClick={() => handleSort("album")}>Album {sortKey === "album" && (sortOrder === "asc" ? "↑" : "↓")}</th>
                         <th>Genre</th>
@@ -86,10 +87,11 @@ function Tracks() {
                                 <img
                                     onMouseEnter={() => preloadImage(track.album.images[0].url)}
                                     onClick={() => handleImgClick(track.album.images[0].url)}
-                                    src={track.album.images[2].url} alt="Album Art" loading="lazy" width='44' />
+                                    src={track.album.images[2].url} alt="Album Art" loading="lazy" width='50' />
                             </td>
-                            <td onClick={() => window.open(track.external_urls.spotify, '_blank')}>{track.name}</td>
-                            <td>
+                            <td className={sortKey === "title" ? "sorted-col" : ""}
+                            onClick={() => window.open(track.external_urls.spotify, '_blank')}>{track.name}</td>
+                            <td className={sortKey === "artist" ? "sorted-col" : ""}>
                                 {track.artists.map((a, i) => (
                                     <span
                                         key={a.id}
@@ -99,7 +101,7 @@ function Tracks() {
                                     </span>
                                 ))}
                             </td>
-                            <td>{track.album.name}</td>
+                            <td className={sortKey === "album" ? "sorted-col" : ""}>{track.album.name}</td>
                             <td>{[...new Set(
                                 track.artists
                                     .flatMap(a => artistsGenres[a.id] || [])

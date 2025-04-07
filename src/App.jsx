@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import './App.css'
 import './components/Header.css'
 import './components/Dashboard.css'
