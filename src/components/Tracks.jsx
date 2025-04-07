@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSpotifyArtistGenre } from '../hooks/useSpotifyArtists';
 import { useSpotifyTopTracks } from '../hooks/useSpotifyTopTracks';
 import './Tracks.css'
@@ -7,14 +7,50 @@ function Tracks() {
     // memoize?
     const { topTracks } = useSpotifyTopTracks();
     const { artistsGenres } = useSpotifyArtistGenre();
+    const [sortKey, setSortKey] = useState("title");
+    const [sortOrder, setSortOrder] = useState("asc");
+
+    const sortedTracks = [...topTracks].sort((a, b) => {
+        let valA, valB;
+
+        switch (sortKey) {
+            case "title":
+                valA = a.name.toLowerCase();
+                valB = b.name.toLowerCase();
+                break;
+            case "artist":
+                valA = a.artists[0].name.toLowerCase();
+                valB = b.artists[0].name.toLowerCase();
+                break;
+            case "album":
+                valA = a.album.name.toLowerCase();
+                valB = b.album.name.toLowerCase();
+                break;
+            default:
+                return 0;
+        }
+
+        return sortOrder === "asc"
+            ? valA.localeCompare(valB)
+            : valB.localeCompare(valA);
+    });
     console.log(artistsGenres)
+
+    const handleSort = (key) => {
+        if (sortKey === key) {
+          setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+        } else {
+          setSortKey(key);
+          setSortOrder("asc");
+        }
+      };
 
     return (
         <table className="track-table">
             <thead>
                 <tr>
                     <th></th>
-                    <th>Title</th>
+                    <th onClick={() => handleSort("title")}>Title</th>
                     <th>Artist</th>
                     <th>Album</th>
                     <th>Genre</th>
@@ -22,7 +58,7 @@ function Tracks() {
                 </tr>
             </thead>
             <tbody>
-                {topTracks.map(track => (
+                {sortedTracks.map(track => (
                     <tr key={track.id}>
                         <td>
                             <img src="album.jpg" alt="Album Art" width="44" />
