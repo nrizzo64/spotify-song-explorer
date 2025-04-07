@@ -15,7 +15,7 @@ function Header() {
 
     return (
         <div className="header">
-            <h1>Spotify Artist Explorer</h1>
+            <h1>Your Top 50 Explorer</h1>
             <div className="header-right">
                 <p>{userInitials}</p>
                 <button onClick={logout}>Logout</button>

@@ -12,10 +12,8 @@ export const useSpotifyArtistGenre = () => {
   const hasRun = useRef(false);
 
   useEffect(() => {
-    console.log(`hasRun.current: ${hasRun.current}`)
     if (hasRun.current || !accessToken || topTracks.length === 0) return;
     hasRun.current = true;
-    console.log(topTracks);
     const seenArtistIds = new Set();
     topTracks.forEach((track) => {
       track.artists.forEach((artist) => {
@@ -61,6 +59,6 @@ const mapArtistToGenres = (artists) => {
       map[a.id] = a.genres;
     }
   });
-  console.log(map);
+
   return map;
 };

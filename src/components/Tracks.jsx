@@ -37,12 +37,14 @@ function Tracks() {
 
     const handleSort = (key) => {
         if (sortKey === key) {
-          setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+            setSortOrder(sortOrder === "asc" ? "desc" : "asc");
         } else {
-          setSortKey(key);
-          setSortOrder("asc");
+            setSortKey(key);
+            setSortOrder("asc");
         }
-      };
+    };
+
+    console.log(sortedTracks);
 
     return (
         <table className="track-table">
@@ -62,8 +64,17 @@ function Tracks() {
                         <td>
                             <img src="album.jpg" alt="Album Art" width="44" />
                         </td>
-                        <td>{track.name}</td>
-                        <td>{track.artists.map(a => a.name).join(", ")}</td>
+                        <td onClick={() => window.open(track.external_urls.spotify, '_blank')}>{track.name}</td>
+                        <td>
+                            {track.artists.map((a, i) => (
+                                <span
+                                    key={a.id}
+                                    onClick={() => window.open(a.external_urls.spotify, '_blank')}
+                                >
+                                    {a.name}{i < track.artists.length - 1 ? ', ' : ''}
+                                </span>
+                            ))}
+                        </td>
                         <td>{track.album.name}</td>
                         <td>{[...new Set(
                             track.artists
