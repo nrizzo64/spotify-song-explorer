@@ -49,9 +49,9 @@ function Tracks() {
             <thead>
                 <tr>
                     <th></th>
-                    <th onClick={() => handleSort("title")}>Title</th>
-                    <th onClick={() => handleSort("artist")}>Artist</th>
-                    <th onClick={() => handleSort("album")}>Album</th>
+                    <th onClick={() => handleSort("title")}>Title {sortKey === "title" && (sortOrder === "asc" ? "↑" : "↓")}</th>
+                    <th onClick={() => handleSort("artist")}>Artist {sortKey === "artist" && (sortOrder === "asc" ? "↑" : "↓")}</th>
+                    <th onClick={() => handleSort("album")}>Album {sortKey === "album" && (sortOrder === "asc" ? "↑" : "↓")}</th>
                     <th>Genre</th>
                     <th></th>
                 </tr>
