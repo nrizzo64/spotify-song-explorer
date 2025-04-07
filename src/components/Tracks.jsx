@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSpotifyArtistGenre } from '../hooks/useSpotifyArtists';
 import { useSpotifyTopTracks } from '../hooks/useSpotifyTopTracks';
+import './Tracks.css'
 
 function Tracks() {
     // memoize?
