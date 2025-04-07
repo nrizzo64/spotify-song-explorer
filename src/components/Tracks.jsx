@@ -62,7 +62,7 @@ function Tracks() {
                 {sortedTracks.map(track => (
                     <tr key={track.id}>
                         <td>
-                            <img src="album.jpg" alt="Album Art" width="44" />
+                            <img src={track.album.images[0].url} alt="Album Art" loading="lazy" width='44' />
                         </td>
                         <td onClick={() => window.open(track.external_urls.spotify, '_blank')}>{track.name}</td>
                         <td>
@@ -80,9 +80,6 @@ function Tracks() {
                             track.artists
                                 .flatMap(a => artistsGenres[a.id] || [])
                         )].join(", ")}</td>
-                        <td>
-                            <button>▶</button>
-                        </td>
                     </tr>
                 ))}
             </tbody>
