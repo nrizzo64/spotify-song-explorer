@@ -1,3 +1,5 @@
+// Get username for initials
+
 import { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 

@@ -1,3 +1,4 @@
+// Step 1 - Get user's top 50 tracks
 import { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 
@@ -32,6 +33,5 @@ export const useSpotifyTopTracks = () => {
 
     fetchUsersTopTracks();
   }, [accessToken]);
-
   return { topTracks, loading, error };
 };

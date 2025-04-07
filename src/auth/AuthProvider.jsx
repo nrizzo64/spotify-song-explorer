@@ -40,12 +40,9 @@ export const AuthProvider = ({ children }) => {
     } else {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
-      console.log(`urlParams: ${urlParams}`);
-      console.log(`code: ${code}`);
 
       if (code) {
         const codeVerifier = localStorage.getItem("code_verifier");
-        console.log(`codeVerifier: ${codeVerifier}`);
 
         fetch("https://accounts.spotify.com/api/token", {
           method: "POST",

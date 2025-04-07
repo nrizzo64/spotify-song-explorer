@@ -1,26 +1,22 @@
 import React from 'react'
+import { useSpotifyArtistGenre } from '../hooks/useSpotifyArtists';
 import { useSpotifyTopTracks } from '../hooks/useSpotifyTopTracks';
 
 function Tracks() {
-    const { topTracks, loading, error } = useSpotifyTopTracks();
-    console.log(topTracks)
+    // memoize?
+    const { topTracks } = useSpotifyTopTracks();
+    const { artistsGenres } = useSpotifyArtistGenre();
+    console.log(artistsGenres)
+
     return (
         <table className="track-table">
             <thead>
                 <tr>
-                    <th>Track</th>
+                    <th></th>
+                    <th>Title</th>
                     <th>Artist</th>
-                    {/* <th>Acousticness</th>
-              <th>Instrumentalness</th>
-              <th>Liveness</th>
-              <th>Loudness</th>
-              <th>Mode</th>
-              <th>Speechiness</th>
-              <th>Tempo</th>
-              <th>Time Signature</th> */}
-                    <th>Energy</th>
-                    <th>Valence</th>
-                    <th>Danceability</th>
+                    <th>Album</th>
+                    <th>Genre</th>
                     <th></th>
                 </tr>
             </thead>
@@ -29,12 +25,14 @@ function Tracks() {
                     <tr key={track.id}>
                         <td>
                             <img src="album.jpg" alt="Album Art" width="44" />
-                            {track.name}
                         </td>
-                        <td>{track.artists[0].name}</td>
-                        <td>0.87</td>
-                        <td>0.65</td>
-                        <td>0.92</td>
+                        <td>{track.name}</td>
+                        <td>{track.artists.map(a => a.name).join(", ")}</td>
+                        <td>{track.album.name}</td>
+                        <td>{[...new Set(
+                            track.artists
+                                .flatMap(a => artistsGenres[a.id] || [])
+                        )].join(", ")}</td>
                         <td>
                             <button>▶</button>
                         </td>
