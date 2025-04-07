@@ -34,7 +34,6 @@ function Tracks() {
             ? valA.localeCompare(valB)
             : valB.localeCompare(valA);
     });
-    console.log(artistsGenres)
 
     const handleSort = (key) => {
         if (sortKey === key) {
@@ -51,8 +50,8 @@ function Tracks() {
                 <tr>
                     <th></th>
                     <th onClick={() => handleSort("title")}>Title</th>
-                    <th>Artist</th>
-                    <th>Album</th>
+                    <th onClick={() => handleSort("artist")}>Artist</th>
+                    <th onClick={() => handleSort("album")}>Album</th>
                     <th>Genre</th>
                     <th></th>
                 </tr>
