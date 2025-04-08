@@ -1,6 +1,5 @@
 import './App.css'
 import './components/Header.css'
-import './components/Dashboard.css'
 import Tracks from './components/Tracks.jsx'
 import Header from './components/Header.jsx'
 import LoginModal from './components/LoginModal.jsx'
@@ -13,13 +12,10 @@ function App() {
   return (
     <>
       {!isAuthenticated && <LoginModal />
-        || 
-        <div className="wrapper">
+        ||
+        <div>
           <Header />
-
-          <div className="dashboard">
-            <Tracks />
-          </div>
+          <Tracks />
         </div>}
 
     </>

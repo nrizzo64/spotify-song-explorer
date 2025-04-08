@@ -2,13 +2,50 @@
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 12px;
-    overflow: hidden;
+    width: 100%;
+    color: gray;
+    background-color: #fff;
+    border-collapse: collapse;
+    font-family: sans-serif;
 }
+
+.track-table thead {
+    background-color: #f3f4f6;
+}
+
+.track-table th,
+.track-table td {
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.track-table img {
+    vertical-align: middle;
+    margin-inline: 1rem;
+    border-radius: 4px;
+}
+
+.track-table tbody tr:hover {
+    background-color: #f9fafb;
+    cursor: pointer;
+}
+
+.track-table button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: gray
+}
+
+
+
 
 td img:hover {
     filter: grayscale(100%) brightness(0.8);
     transition: filter 0.2s ease;
 }
+
 
 th:first-child {
     border-top-left-radius: 12px;
@@ -20,28 +57,40 @@ th:last-child {
 
 tr:last-child td:first-child {
     border-bottom-left-radius: 12px;
+    border-bottom: none;
 }
 
 tr:last-child td:last-child {
     border-bottom-right-radius: 12px;
-}
-
-
-th {
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    border-bottom: none;
 }
 
 th:hover {
     color: green;
 }
 
+
 td:hover {
     color: green;
 }
 
+td {
+    max-inline-size: 14rem;
+    height: 3.5rem;
+}
 
 
 .sorted-col {
     font-weight: bold;
+}
+
+.genre-pill {
+    display: inline-block;
+    margin: 2px;
+    padding: 2px 8px;
+    background-color: #ddd;
+    color: #111;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    white-space: nowrap;
 }
