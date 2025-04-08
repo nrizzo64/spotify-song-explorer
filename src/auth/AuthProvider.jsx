@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
     const storedToken = localStorage.getItem("access_token");
     const storedExpiry = localStorage.getItem("expires_at");
 
+    console.log(storedExpiry && Date.now() < parseInt(storedExpiry))
     if (storedToken && storedExpiry && Date.now() < parseInt(storedExpiry)) {
       setAccessToken(storedToken);
       setExpiresAt(parseInt(storedExpiry));
