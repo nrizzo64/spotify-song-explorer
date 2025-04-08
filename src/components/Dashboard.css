@@ -80,7 +80,7 @@ th:last-child:hover {
 }
 
 
-td:hover {
+.table-link:hover {
   color: #1ED760;
 }
 

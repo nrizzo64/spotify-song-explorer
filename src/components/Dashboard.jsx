@@ -5,7 +5,6 @@ import './Dashboard.css'
 import AlbumImageModal from './AlbumImageModal.jsx';
 
 function Dashboard() {
-    // memoize?
     const { topTracks } = useSpotifyTopTracks();
     const { artistsGenres } = useSpotifyArtistGenre();
     const [sortKey, setSortKey] = useState("title");
@@ -88,7 +87,7 @@ function Dashboard() {
                                         onClick={() => handleImgClick(track.album.images[0].url)}
                                         src={track.album.images[2].url} alt="Album Art" loading="lazy" width='64' />
                                 </td>
-                                <td className={sortKey === "title" ? "sorted-col" : ""}
+                                <td className={`table-link ${sortKey === "title" ? "sorted-col" : ""}`}
                                     onClick={() => window.open(track.external_urls.spotify, '_blank')}>{track.name}</td>
                                 <td className={sortKey === "artist" ? "sorted-col" : ""}>
                                     {track.artists.map((a, i) => (
@@ -96,11 +95,11 @@ function Dashboard() {
                                             key={a.id}
                                             onClick={() => window.open(a.external_urls.spotify, '_blank')}
                                         >
-                                            {a.name}{i < track.artists.length - 1 ? ', ' : ''}
+                                            <span className="table-link">{a.name}</span>{i < track.artists.length - 1 ? ', ' : ''}
                                         </span>
                                     ))}
                                 </td>
-                                <td className={sortKey === "album" ? "sorted-col" : ""}>{track.album.name}</td>
+                                <td className={`table-link ${sortKey === "album" ? "sorted-col" : ""}`}>{track.album.name}</td>
                                 <td>
                                     {[...new Set(
                                         track.artists.flatMap(a => artistsGenres[a.id] || [])
