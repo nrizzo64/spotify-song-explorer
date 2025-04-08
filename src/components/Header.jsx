@@ -4,7 +4,7 @@ import { useAuth } from "../auth/AuthProvider.jsx";
 import { useSpotifyUser } from '../hooks/useSpotifyUser';
 import spotifyLogo from '../assets/2024 Spotify Brand Assets/Spotify_Full_Logo_RGB_Green.png';
 
-function Header({toggleTheme}) {
+function Header({toggleTheme, theme}) {
     const { logout } = useAuth();
     const { user, loading, error } = useSpotifyUser();
     const userInitials = useMemo(() => {
@@ -30,7 +30,7 @@ function Header({toggleTheme}) {
                 <button onClick={
                     () => window.open(user.external_urls.spotify, "_blank", "noopener,noreferrer")} className="profile-button">{userInitials}</button>
                 <button onClick={logout}>Logout</button>
-                <button onClick={toggleTheme}>Toggle Theme</button>
+                <button onClick={toggleTheme}>{theme === 'dark' ? "Dark Mode" : "Light Mode"}</button>
             </div>
         </div >
     )

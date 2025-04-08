@@ -83,7 +83,7 @@ th:last-child:hover {
 
 
 .table-link:hover {
-  color: var(--text-color);
+  color: var(--link-color);
 }
 
 .track-table td {
@@ -127,7 +127,7 @@ th:last-child:hover {
   display: inline-block;
   margin: 2px;
   padding: 2px 8px;
-  background-color: var(--genre-bg-hover);
+  background-color: var(--genre-bg-inactive);
   color: var(--genre-text);
   border-radius: 12px;
   font-size: 0.8rem;

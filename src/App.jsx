@@ -23,7 +23,7 @@ function App() {
       {!isAuthenticated && <LoginModal />
         ||
         <div>
-          <Header toggleTheme={toggleTheme}/>
+          <Header toggleTheme={toggleTheme} theme={theme}/>
           <Dashboard />
         </div>}
     </>
