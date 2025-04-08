@@ -61,6 +61,7 @@ function Dashboard() {
         setModalVisible(true);
     }
 
+    console.log(sortedTracks)
     return (
         <>
             {modalVisible && (
@@ -99,7 +100,8 @@ function Dashboard() {
                                         </span>
                                     ))}
                                 </td>
-                                <td className={`table-link ${sortKey === "album" ? "sorted-col" : ""}`}>{track.album.name}</td>
+                                <td className={`table-link ${sortKey === "album" ? "sorted-col" : ""}`}
+                                onClick={() => window.open(track.album.external_urls.spotify)}>{track.album.name}</td>
                                 <td>
                                     {(() => {
                                         const genres = [...new Set(
