@@ -26,6 +26,10 @@
   border-bottom: 1px solid var(--table-separator);
 }
 
+.track-table tr:last-child td {
+  border-bottom: transparent;
+}
+
 .track-table th {
   cursor: pointer;
 }
