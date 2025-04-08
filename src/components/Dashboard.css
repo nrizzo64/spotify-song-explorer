@@ -55,13 +55,18 @@ td img:hover {
     transition: filter 0.2s ease;
 }
 
-
-th:first-child {
-    border-top-left-radius: 12px;
+.track-table th {
+  padding-inline: 1rem;
 }
 
-th:last-child {
+.track-table th:first-child {
+    border-top-left-radius: 12px;
+    padding-inline-start: 0rem;
+}
+
+.track-table th:last-child {
     border-top-right-radius: 12px;
+    padding-inline-end: 0rem;
 }
 
 tr:last-child td:first-child {
@@ -86,6 +91,15 @@ td:hover {
 td {
     max-inline-size: 14rem;
     height: 3.5rem;
+    padding-inline: 1rem;
+}
+
+.track-table td:first-child {
+  padding-inline-start: 0rem;
+}
+
+.track-table td:last-child {
+  padding-inline-end: 0rem;
 }
 
 
