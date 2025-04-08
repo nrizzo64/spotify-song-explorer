@@ -1,5 +1,3 @@
-import './App.css'
-import './components/Header.css'
 import Header from './components/Header.jsx'
 import LoginModal from './components/LoginModal.jsx'
 import { useAuth } from "./auth/AuthProvider.jsx";
@@ -17,7 +15,6 @@ function App() {
           <Header />
           <Dashboard />
         </div>}
-
     </>
 
   )

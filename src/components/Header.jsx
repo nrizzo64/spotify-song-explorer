@@ -1,3 +1,4 @@
+import './Header.css'
 import React, { useMemo } from 'react'
 import { useAuth } from "../auth/AuthProvider.jsx";
 import { useSpotifyUser } from '../hooks/useSpotifyUser';

@@ -1,25 +1,40 @@
 :root {
+  /* Theme vars (dark mode default) */
+  --bg-color: #242424;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --link-color: #1ED760;
+  --button-bg: #1a1a1a;
+  --button-text: #ffffff;
+  --button-border: transparent;
+  --button-hover-border: #1ED760;
+
+  /* Typography & smoothing */
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  color-scheme: light dark;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body {
+  margin-inline: 3rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 a {
   font-weight: 500;
-  color: #1ED760;
+  color: var(--link-color);
   text-decoration: inherit;
 }
 a:hover {
-  color: #1ED760;
+  color: var(--link-color);
 }
 
 .wrapper {
@@ -36,19 +51,20 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   cursor: pointer;
   transition: border-color 0.25s, color 0.25s;
 }
 
 button:hover,
 button:focus-visible {
-  border-color: #1ED760;
+  border-color: var(--button-hover-border);
 }
 
 button:active {
-  border-color: #1ED760;
-  color: #1ED760;
+  border-color: var(--button-hover-border);
+  color: var(--link-color);
 }
 
 button:focus-visible {
@@ -58,9 +74,15 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --bg-color: #ffffff;
+    --text-color: #213547;
+    --link-color: #1ED760;
+    --button-bg: #f9f9f9;
+    --button-text: #000000;
+    --button-border: transparent;
+    --button-hover-border: #1ED760;
   }
+
   a:hover {
     color: #1ED760;
   }
