@@ -1,13 +1,4 @@
 :root {
-  /* Theme vars (dark mode default) */
-  --bg-color: #242424;
-  --text-color: rgba(255, 255, 255, 0.87);
-  --link-color: #1ED760;
-  --button-bg: #1a1a1a;
-  --button-text: #ffffff;
-  --button-border: transparent;
-  --button-hover-border: #1ED760;
-
   /* Typography & smoothing */
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,6 +19,50 @@ body {
   color: var(--text-color);
 }
 
+body.light {
+  --bg-color: #ffffff;
+  --text-color: #213547;
+  --link-color: #1ED760;
+  
+  --button-bg: #f9f9f9;
+  --button-text: rgba(36, 36, 36, 1);
+  --button-border: #242424;
+  --button-hover-border: #1ED760;
+  
+  --table-th-bg: #f3f4f6;
+  --table-td-bg: rgba(0, 0, 0, 0);
+  --table-td-bg-active: rgba(60, 60, 60, 1);
+  --table-shadow: rgba(0, 0, 0, 0.1);
+  
+  --header-shadow: rgba(0, 0, 0, 0.1);
+  --header-bg: #fff
+}
+
+body.dark {
+  --bg-color: rgba(60, 60, 60, 0.3);
+  --text-color: rgba(255, 255, 255, 0.87);
+  --link-color: rgba(30, 215, 96, 1);
+  
+  --button-bg: rgba(30, 215, 96, 1);
+  --button-text: rgba(60, 60, 60, 1);
+  --button-border: transparent;
+  --button-hover-border: rgba(30, 215, 96, 0.9);
+  --button-active-color: #fff;
+  
+  --header-shadow: rgba(0, 0, 0, 0.1);
+  --header-bg: rgba(60, 60, 60, 0.35);
+
+  --table-th-bg: rgba(60, 60, 60, 0.35);
+  --table-td-bg: rgba(60, 60, 60, 0.5);
+  --table-td-bg-active: rgba(60, 60, 60, 1);
+  --table-separator: rgba(229, 231, 235, 0.2);
+
+  --genre-text: rgba(60, 60, 60, 1);
+  --genre-text-hover: rgba(0, 0, 0, 1);
+  --genre-bg: rgba(30, 215, 96, 1);
+  --genre-bg-hover: rgba(221, 221, 221, 1);
+}
+
 a {
   font-weight: 500;
   color: var(--link-color);
@@ -46,7 +81,7 @@ a:hover {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--button-border);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -59,34 +94,14 @@ button {
 
 button:hover,
 button:focus-visible {
-  border-color: var(--button-hover-border);
+  background-color: var(--button-hover-border);
 }
 
 button:active {
   border-color: var(--button-hover-border);
-  color: var(--link-color);
+  color: var(--button-active-color);
 }
 
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg-color: #ffffff;
-    --text-color: #213547;
-    --link-color: #1ED760;
-    --button-bg: #f9f9f9;
-    --button-text: #000000;
-    --button-border: transparent;
-    --button-hover-border: #1ED760;
-  }
-
-  a:hover {
-    color: #1ED760;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }

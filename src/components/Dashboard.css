@@ -1,6 +1,9 @@
 .table-wrapper {
   overflow-x: auto;
   width: 100%;
+  box-shadow: 0 4px 6px var(--table-shadow);
+  margin-block-end: 3rem;
+  border-radius: 12px;
 }
 
 .track-table {
@@ -8,20 +11,19 @@
   border-spacing: 0;
   border-radius: 12px;
   width: 100%;
-  color: #212121;
-  background-color: #fff;
+  color: var(--text-color);
   border-collapse: collapse;
   font-family: sans-serif;
 }
 
 .track-table thead {
-  background-color: #f3f4f6;
+  background-color: var(--table-th-bg);
 }
 
 .track-table th,
 .track-table td {
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--table-separator);
 }
 
 .track-table th {
@@ -35,7 +37,7 @@
 }
 
 .track-table tbody tr:hover {
-  background-color: #f9fafb;
+  background-color: var(--table-td-bg-active);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
@@ -71,23 +73,24 @@ tr:last-child td:last-child {
 }
 
 th:hover {
-  color: #1ED760;
+  color: var(--link-color);
 }
 
 th:last-child:hover {
-  color: #333333;
+  color: var(--text-color);
   cursor: default;
 }
 
 
 .table-link:hover {
-  color: #1ED760;
+  color: var(--text-color);
 }
 
-td {
+.track-table td {
   max-inline-size: 14rem;
   height: 3.5rem;
   padding-inline: 1rem;
+  background-color: var(--table-td-bg);
 }
 
 .track-table td:first-child {
@@ -98,7 +101,6 @@ td {
   cursor: default;
 }
 
-
 .sorted-col {
   font-weight: bold;
 }
@@ -107,16 +109,16 @@ td {
   display: inline-block;
   margin: 2px;
   padding: 2px 8px;
-  background-color: #ddd;
-  color: #111;
+  background-color: var(--genre-bg);
+  color: var(--genre-text-hover);
   border-radius: 12px;
   font-size: 0.8rem;
   white-space: nowrap;
 }
 
 .genre-pill:hover {
-  color: #1ED760;
-  background-color: #535353;
+  color: var(--genre-text-hover);
+  background-color: var(--genre-bg-hover);
   cursor: pointer;
 }
 
@@ -125,8 +127,8 @@ td {
   display: inline-block;
   margin: 2px;
   padding: 2px 8px;
-  background-color: #ddd;
-  color: #111;
+  background-color: var(--genre-bg-hover);
+  color: var(--genre-text);
   border-radius: 12px;
   font-size: 0.8rem;
   white-space: nowrap;

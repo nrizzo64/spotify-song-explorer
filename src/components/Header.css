@@ -2,8 +2,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    min-block-size: 8rem;
+    box-shadow: 0 0 6px var(--header-shadow);
+    background-color: var(--header-bg);
+    margin-block: 1rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    border-radius: 12px;
 }
 
 .header-right {
@@ -20,12 +24,11 @@
     width: 2.5rem;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    background-color: #1a1a1a;
-    color: rgba(255, 255, 255, 0.87);
+    background-color: var(--button-bg);
     font-weight: bold;
     line-height: 1;
     margin-block: 0rem;
-    border: 1px solid #1a1a1a;
+    border: 1px solid var(--button-border);
 }
 
 .header-left {
@@ -34,7 +37,7 @@
 }
 
 .header-left h1 {
-    margin-block-end: 0rem;
+    margin-block: 0rem;
 }
 
 @media (width <=768px) {
@@ -52,7 +55,6 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    /* space between text and logo */
 }
 
 .spotify-logo {
