@@ -1,9 +1,9 @@
 import './App.css'
 import './components/Header.css'
-import Tracks from './components/Tracks.jsx'
 import Header from './components/Header.jsx'
 import LoginModal from './components/LoginModal.jsx'
 import { useAuth } from "./auth/AuthProvider.jsx";
+import Dashboard from './components/Dashboard.jsx'
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         ||
         <div>
           <Header />
-          <Tracks />
+          <Dashboard />
         </div>}
 
     </>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useSpotifyArtistGenre } from '../hooks/useSpotifyArtists';
 import { useSpotifyTopTracks } from '../hooks/useSpotifyTopTracks';
-import './Tracks.css'
+import './Dashboard.css'
 import AlbumImageModal from './AlbumImageModal.jsx';
 
-function Tracks() {
+function Dashboard() {
     // memoize?
     const { topTracks } = useSpotifyTopTracks();
     const { artistsGenres } = useSpotifyArtistGenre();
@@ -118,4 +118,4 @@ function Tracks() {
     )
 }
 
-export default Tracks;
+export default Dashboard;

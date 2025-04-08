@@ -19,6 +19,10 @@
     border-bottom: 1px solid #e5e7eb;
 }
 
+.track-table th {
+  cursor: pointer;
+}
+
 .track-table img {
     vertical-align: middle;
     margin-inline: 1rem;
