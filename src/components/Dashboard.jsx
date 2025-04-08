@@ -101,13 +101,21 @@ function Dashboard() {
                                 </td>
                                 <td className={`table-link ${sortKey === "album" ? "sorted-col" : ""}`}>{track.album.name}</td>
                                 <td>
-                                    {[...new Set(
-                                        track.artists.flatMap(a => artistsGenres[a.id] || [])
-                                    )].map((genre, i) => (
-                                        <span key={i} className="genre-pill">
-                                            {genre}
-                                        </span>
-                                    ))}
+                                    {(() => {
+                                        const genres = [...new Set(
+                                            track.artists.flatMap(a => artistsGenres[a.id] || [])
+                                        )];
+
+                                        return genres.length > 0 ? (
+                                            genres.map((genre, i) => (
+                                                <span key={i} className="genre-pill">
+                                                    {genre}
+                                                </span>
+                                            ))
+                                        ) : (
+                                            <span className="no-genres">none</span>
+                                        );
+                                    })()}
                                 </td>
                             </tr>
                         ))}
