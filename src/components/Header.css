@@ -1,7 +1,9 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    min-block-size: 8rem;
 }
 
 .header-right {
@@ -11,13 +13,25 @@
 }
 
 .header-right p {
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    width: 1.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 2.5rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
     background-color: gray;
-    padding: 0.75rem;
+    color: white;
+    font-weight: bold;
+    line-height: 1;
     margin-inline-end: 1rem;
+}
+
+@media (width <= 768px) {
+    .header-right {
+      flex-direction: column;
+    }
+
+    .header-right p {
+        margin-inline-end: 0rem;
+    }
 }

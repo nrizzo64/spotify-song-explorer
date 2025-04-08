@@ -68,52 +68,54 @@ function Dashboard() {
             {modalVisible && (
                 <AlbumImageModal imageUrl={modalImgUrl} onClose={() => setModalVisible(false)} />
             )}
-            <table className="track-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th className={sortKey === "title" ? "sorted-col" : ""}
-                            onClick={() => handleSort("title")}>Title {sortKey === "title" && (sortOrder === "asc" ? "↑" : "↓")}</th>
-                        <th onClick={() => handleSort("artist")}>Artist {sortKey === "artist" && (sortOrder === "asc" ? "↑" : "↓")}</th>
-                        <th onClick={() => handleSort("album")}>Album {sortKey === "album" && (sortOrder === "asc" ? "↑" : "↓")}</th>
-                        <th>Genre</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortedTracks.map(track => (
-                        <tr key={track.id}>
-                            <td>
-                                <img
-                                    onMouseEnter={() => preloadImage(track.album.images[0].url)}
-                                    onClick={() => handleImgClick(track.album.images[0].url)}
-                                    src={track.album.images[2].url} alt="Album Art" loading="lazy" width='64' />
-                            </td>
-                            <td className={sortKey === "title" ? "sorted-col" : ""}
-                                onClick={() => window.open(track.external_urls.spotify, '_blank')}>{track.name}</td>
-                            <td className={sortKey === "artist" ? "sorted-col" : ""}>
-                                {track.artists.map((a, i) => (
-                                    <span
-                                        key={a.id}
-                                        onClick={() => window.open(a.external_urls.spotify, '_blank')}
-                                    >
-                                        {a.name}{i < track.artists.length - 1 ? ', ' : ''}
-                                    </span>
-                                ))}
-                            </td>
-                            <td className={sortKey === "album" ? "sorted-col" : ""}>{track.album.name}</td>
-                            <td>
-                                {[...new Set(
-                                    track.artists.flatMap(a => artistsGenres[a.id] || [])
-                                )].map((genre, i) => (
-                                    <span key={i} className="genre-pill">
-                                        {genre}
-                                    </span>
-                                ))}
-                            </td>
+            <div className="table-wrapper">
+                <table className="track-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th className={sortKey === "title" ? "sorted-col" : ""}
+                                onClick={() => handleSort("title")}>Title {sortKey === "title" && (sortOrder === "asc" ? "↑" : "↓")}</th>
+                            <th onClick={() => handleSort("artist")}>Artist {sortKey === "artist" && (sortOrder === "asc" ? "↑" : "↓")}</th>
+                            <th onClick={() => handleSort("album")}>Album {sortKey === "album" && (sortOrder === "asc" ? "↑" : "↓")}</th>
+                            <th>Genre</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {sortedTracks.map(track => (
+                            <tr key={track.id}>
+                                <td>
+                                    <img
+                                        onMouseEnter={() => preloadImage(track.album.images[0].url)}
+                                        onClick={() => handleImgClick(track.album.images[0].url)}
+                                        src={track.album.images[2].url} alt="Album Art" loading="lazy" width='64' />
+                                </td>
+                                <td className={sortKey === "title" ? "sorted-col" : ""}
+                                    onClick={() => window.open(track.external_urls.spotify, '_blank')}>{track.name}</td>
+                                <td className={sortKey === "artist" ? "sorted-col" : ""}>
+                                    {track.artists.map((a, i) => (
+                                        <span
+                                            key={a.id}
+                                            onClick={() => window.open(a.external_urls.spotify, '_blank')}
+                                        >
+                                            {a.name}{i < track.artists.length - 1 ? ', ' : ''}
+                                        </span>
+                                    ))}
+                                </td>
+                                <td className={sortKey === "album" ? "sorted-col" : ""}>{track.album.name}</td>
+                                <td>
+                                    {[...new Set(
+                                        track.artists.flatMap(a => artistsGenres[a.id] || [])
+                                    )].map((genre, i) => (
+                                        <span key={i} className="genre-pill">
+                                            {genre}
+                                        </span>
+                                    ))}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </>
     )
 }
