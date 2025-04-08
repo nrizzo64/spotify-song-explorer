@@ -13,22 +13,24 @@ function Header() {
         return '';
     }, [user]);
 
-
     return (
         <div className="header">
-            <div>
+            <div className="header-left">
                 <h1>Your Top 50 Explorer</h1>
                 <div className="powered-by">
                     <p>Powered by</p>
-                    <img className='spotify-logo' src={spotifyLogo} alt="Spotify Logo" />
+                    <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer">
+                        <img className='spotify-logo' src={spotifyLogo} alt="Spotify Logo" />
+                    </a>
                 </div>
 
             </div>
             <div className="header-right">
-                <p>{userInitials}</p>
+                <button onClick={
+                    () => window.open(user.external_urls.spotify, "_blank", "noopener,noreferrer")} className="profile-button">{userInitials}</button>
                 <button onClick={logout}>Logout</button>
             </div>
-        </div>
+        </div >
     )
 }
 

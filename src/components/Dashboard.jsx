@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useSpotifyArtistGenre } from '../hooks/useSpotifyArtists';
 import { useSpotifyTopTracks } from '../hooks/useSpotifyTopTracks';
+import { useSpotifyArtistGenre } from '../hooks/useSpotifyArtists';
 import './Dashboard.css'
 import AlbumImageModal from './AlbumImageModal.jsx';
 
@@ -61,7 +61,6 @@ function Dashboard() {
         setModalImgUrl(url);
         setModalVisible(true);
     }
-    console.log(sortedTracks);
 
     return (
         <>
